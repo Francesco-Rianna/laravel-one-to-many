@@ -6,6 +6,7 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">Slug</th>
+        <th scope="col">Tipo</th>
         <th scope="col">Nome cliente</th>
         <th scope="col">Testo</th>
         <th scope="col">immagine</th>
@@ -17,6 +18,7 @@
             <tr>
                 <td>{{$project->name}}</td>
                 <td>{{$project->slug}}</td>
+                <td>{{$project->type ? $project->type->name : 'Tipo non esistente' }}</td>
                 <td>{{$project->client_name}}</td>
                 <td>{{$project->summary}}</td>
                 <td>

@@ -27,6 +27,18 @@
         <label for="cover_image" class="form-label">Inserisci un immagine</label>
         <input class="form-control" type="file" id="cover_image" name="cover_image">
     </div>
+
+    <div>
+        <label for="type_id">Tipo</label>
+        <select class="form-select" id="type_id" name="type_id">
+            <option selected>Scegli il tipo</option>
+            @foreach($types as $type)
+             <option value="{{$type->id}}">{{$type->name}}</option>
+            @endforeach
+        </select>
+    </div>
+
+
     <div class="form-group">
         <label for="summary">Summary:</label>
         <textarea class="form-control" id="summary" name="summary" rows="4" ></textarea>

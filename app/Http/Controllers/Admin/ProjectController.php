@@ -29,8 +29,9 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.projects.create');
+    {    
+        $types= Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -80,8 +81,9 @@ class ProjectController extends Controller
     public function edit($id)
     {
         $project= Project::findOrFail($id);
+        $types= Type::all();
 
-        return view('admin.projects.edit', compact('project') );
+        return view('admin.projects.edit', compact('project','types') );
     }
 
     /**
@@ -135,6 +137,7 @@ class ProjectController extends Controller
             'name' => 'required|min:5|max:250',
             'client_name' => 'required|string',
             'summary' => 'nullable|string', 
+            'type_id' => 'nullable|exists:types,id',
         ], [
             'name.required'=> 'Il campo nome è obbligatorio.',
             'name.min' => 'Il nome deve contenere almeno 5 caratteri.',
